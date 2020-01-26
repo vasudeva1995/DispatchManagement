@@ -1,0 +1,25 @@
+{
+  "name": "dispatch-management-package",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --mode development",
+    "build": "webpack",
+    "build:prod": "webpack -p"
+  },
+  "repository": "https://github.com/shivsony/DispatchManamgement.git",
+  "author": "vasudevadixit <vasudeva.dixit@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/core": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
+    "@babel/preset-react": "^7.8.3",
+    "babel-loader": "^8.0.6",
+    "html-webpack-plugin": "^3.2.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.10.1"
+  }
+}
