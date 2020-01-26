@@ -9,23 +9,25 @@ class App extends React.Component {
     }
     this.updateCredentials=this.updateCredentials.bind(this);
   }
-  updateCredentials(key,value){
+
+  updateCredentials(key, event){
      if(key==='email')
-     this.setState({email:value});
+      this.setState({email: event.currentTarget.value});
      else
-     this.setState({password:value})
+      this.setState({password: event.currentTarget.value})
   }
   render() {
     return (
       <div>
           <div>
             <h1> email </h1>
-            <input onClick={(val)=>this.updateCredentials('email',val)}></input>;
+            <input onChange={(val)=>this.updateCredentials('email',val)}></input>;
           </div>
           <div>
               <h1> pwd </h1>
-              <input onClick={(val)=>this.updateCredentials('password',val)}></input>;
+              <input onChange={(val)=>this.updateCredentials('password',val)}></input>;
           </div>
+          <div>{this.state.email + this.state.password}</div>
       </div>
     );
   }
