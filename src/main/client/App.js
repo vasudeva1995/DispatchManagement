@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+
+import { simpleAction } from "./container/Header/appAction";
 
 class App extends React.Component {
   constructor(props){
@@ -15,6 +18,7 @@ class App extends React.Component {
       this.setState({email: event.currentTarget.value});
      else
       this.setState({password: event.currentTarget.value})
+    this.props.simpleAction(event.currentTarget.value);
   }
   render() {
     return (
@@ -27,10 +31,18 @@ class App extends React.Component {
               <h1> pwd </h1>
               <input onChange={(val)=>this.updateCredentials('password',val)}></input>;
           </div>
-          <div>{this.state.email + this.state.password}</div>
+          <div>{this.props.data}</div>
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  data: state.appReducer.result
+})
+
+const mapDispatchToProps = {
+  simpleAction
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
