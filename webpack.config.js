@@ -1,7 +1,7 @@
 const path = require("path");
 const webpack = require("webpack");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
-const buildDirectory = path.join(__dirname, './src/main/webapp/v2/dist');
+const buildDirectory = path.join(__dirname, './src/main/webapp/dist');
 
 module.exports = {
   entry: "./src/main/client/index.js",
