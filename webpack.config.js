@@ -23,14 +23,11 @@ module.exports = {
   resolve: { extensions: ["*", ".js", ".jsx"] },
   output: {
     path: buildDirectory,
-    filename: "bundle.js"
+    filename: "bundle.js",
   },
  devServer: {
          contentBase: buildDirectory,
          historyApiFallback: true,
-         historyApiFallback:{
-               index:'/webapp/index.html'
-             },
              port: 3000
 
      },

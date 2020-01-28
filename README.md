@@ -55,5 +55,6 @@
 
  17) es5 -> ecma script
 
+ 18) historyApiFallback need to be added to webpack server.. Reason - when we hit any api say /students it makes a get request on server side and it is not matched on server side.So it gives 404.If we set historyFallBack to true, if url dosent matches at server side, it fallsback to index.html(client side).Here we have routes to handle the component requested on client side.
 
 

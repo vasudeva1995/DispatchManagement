@@ -1,7 +1,13 @@
-import {react, PureComponent} from "react";
-
-const MyComponent = () => {
-    <div>hello my MyComponent</div>
+import React from "react";
+import {connect} from 'react-redux'
+class MyComponent extends React.Component {
+    render() { 
+        return <div>shbjsbdjabhdabs</div>;
+    }
 }
+ 
+const mapStateToProps = state => ({...state})
 
-export default MyComponent;
+export default connect(mapStateToProps, {
+
+  })(MyComponent);
