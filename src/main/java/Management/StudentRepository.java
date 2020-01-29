@@ -1,4 +1,4 @@
-package Startup.Dispatch.Management;
+package Management;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
