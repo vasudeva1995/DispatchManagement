@@ -1,3 +1,6 @@
+0)   git config --global user.email "you@example.com"
+     git config --global user.name "Your Name"
+
 1) After adding project through spring initializer, we need to fix a dependency of spring boot starter web and spring boot starter test.Spring boot starter is basically dependency manager for spring boot.
 
 
@@ -45,9 +48,7 @@
       build - webpack is compiled and a new bundle is created
 
 
-
-
-15) Patch releases: 1.0 or 1.0.x or ~1.0.4   - bug fixed backward compatible
+ 15) Patch releases: 1.0 or 1.0.x or ~1.0.4   - bug fixed backward compatible
     Minor releases: ^1.0.4    -> for minor releases as 1.0.6 or 1.2.0  - new feature backward compatible
  => it can update to this version and resolve the dependency.
 
@@ -57,4 +58,15 @@
 
  18) historyApiFallback need to be added to webpack server.. Reason - when we hit any api say /students it makes a get request on server side and it is not matched on server side.So it gives 404.If we set historyFallBack to true, if url dosent matches at server side, it fallsback to index.html(client side).Here we have routes to handle the component requested on client side.
 
+ 19) --config file of git should be made locally for a single directory and globally if you want to use multiple git accounts
 
+ 20) Setting up redux ->
+
+ 21) target file is like node-modules of front
+
+ 22) "rules": {
+       "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+     }
+add this to .eslintrc.json file to allow jsx in js files
+
+ 23) eslint initializing comand -> npx eslint --init
