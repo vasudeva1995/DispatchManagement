@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { simpleAction } from './container/Header/appAction';
 
@@ -14,11 +15,19 @@ class App extends React.Component {
   }
 
   updateCredentials(key, event) {
-    if (key === 'email') { this.setState({ email: event.currentTarget.value }); } else { this.setState({ password: event.currentTarget.value }); }
-    this.props.simpleAction(event.currentTarget.value);
+    const { firstAction } = this.props;
+    if (key === 'email') {
+      this.setState({ email: event.currentTarget.value });
+    } else {
+      this.setState({ password: event.currentTarget.value });
+    }
+    firstAction(event.currentTarget.value);
   }
 
   render() {
+    const { data } = this.props;
+    const { email, password } = this.state;
+    console.log(email, password);
     return (
       <div>
         <div>
@@ -30,7 +39,7 @@ class App extends React.Component {
           <input onChange={(val) => this.updateCredentials('password', val)} />
 
         </div>
-        <div>{this.props.data}</div>
+        <div>{data}</div>
       </div>
     );
   }
@@ -41,7 +50,12 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-  simpleAction,
+  firstAction: simpleAction,
+};
+
+App.propTypes = {
+  data: PropTypes.string.isRequired,
+  firstAction: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
