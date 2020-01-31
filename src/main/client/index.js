@@ -1,19 +1,19 @@
 
-import React from "react";
-import ReactDOM from "react-dom";
-import { Provider } from "react-redux";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 import {
-    BrowserRouter as Router
-  } from "react-router-dom";
+  BrowserRouter as Router,
+} from 'react-router-dom';
 
-import DefaultContainer from "./container/DefaultContainer";
-import configureStore from "./store";
+import DefaultContainer from './container/DefaultContainer';
+import configureStore from './store';
 
 ReactDOM.render(
-    <Provider store={configureStore()}>
-      <Router>
-        <DefaultContainer />
-      </Router>
-    </Provider>,
-    document.getElementById('root')
+  <Provider store={configureStore()}>
+    <Router>
+      <DefaultContainer />
+    </Router>
+  </Provider>,
+  document.getElementById('root'),
 );

@@ -3,11 +3,13 @@ package Management;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import static org.springframework.boot.SpringApplication.*;
+
 @SpringBootApplication
 public class DispatchManagementApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DispatchManagementApplication.class, args);
+		run(DispatchManagementApplication.class, args);
 	}
 
 }
