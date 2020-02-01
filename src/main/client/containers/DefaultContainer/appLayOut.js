@@ -17,7 +17,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 
 import { mainListItems, secondaryListItems } from './listItems';
-import Header from '../Header';
+import RoutesToRender from './routes';
 
 const drawerWidth = 240;
 
@@ -102,7 +102,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Home() {
+function AppLayOut() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const handleDrawerOpen = () => {
@@ -156,7 +156,7 @@ function Home() {
         <main className={classes.content}>
           <div className={classes.appBarSpacer} />
           <Container maxWidth="lg" className={classes.container}>
-            <Header />
+            <RoutesToRender />
           </Container>
         </main>
       </div>
@@ -164,4 +164,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default AppLayOut;
