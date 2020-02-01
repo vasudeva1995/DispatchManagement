@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { simpleAction } from './container/Header/appAction';
+import { simpleAction } from './appAction';
 
 class App extends React.Component {
   constructor(props) {

@@ -6,7 +6,7 @@ import {
   BrowserRouter as Router,
 } from 'react-router-dom';
 
-import DefaultContainer from './container/DefaultContainer';
+import DefaultContainer from './containers/DefaultContainer';
 import configureStore from './store';
 
 ReactDOM.render(
