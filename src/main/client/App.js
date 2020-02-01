@@ -54,8 +54,12 @@ const mapDispatchToProps = {
 };
 
 App.propTypes = {
-  data: PropTypes.string.isRequired,
+  data: PropTypes.string,
   firstAction: PropTypes.func.isRequired,
+};
+
+App.defaultProps = {
+  data: 'initial',
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
