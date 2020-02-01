@@ -1,8 +1,10 @@
 const path = require('path');
-const webpack = require('webpack');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 
-const buildDirectory = path.join(__dirname, './src/main/webapp/dist');
+const buildDirectory = path.join(__dirname, './src/main/webapp/');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+const isDevelopment = process.env.NODE_ENV === 'development';
 
 module.exports = {
   entry: './src/main/client/index.js',
@@ -24,7 +26,7 @@ module.exports = {
   resolve: { extensions: ['*', '.js', '.jsx'] },
   output: {
     path: buildDirectory,
-    filename: 'bundle.js',
+    filename: 'bundle.[contentHash].js',
   },
   devServer: {
     contentBase: buildDirectory,
@@ -34,7 +36,11 @@ module.exports = {
   },
   plugins: [
     new HtmlWebPackPlugin({
-      template: path.join(__dirname, './src/main/webapp/index.html'),
+      template: path.join(__dirname, './src/main/client/template.html'),
+    }),
+    new MiniCssExtractPlugin({
+      filename: isDevelopment ? '[name].css' : '[name].[hash].css',
+      chunkFilename: isDevelopment ? '[id].css' : '[id].[hash].css',
     }),
   ],
 };
