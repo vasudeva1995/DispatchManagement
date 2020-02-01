@@ -32,4 +32,5 @@ build/
 
 ######frontend#######
 node_modules
-dist
+webapp
+yarn.lock

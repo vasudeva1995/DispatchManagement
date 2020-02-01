@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import RoutesToRender from './routes';
+import './style.scss';
 // This class contains fixed components to render including the switch routing which is dynamic and is managed by routes
 
 
