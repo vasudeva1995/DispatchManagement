@@ -2,14 +2,14 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import App from '../../App';
-import Header from '../Header';
+import Home from '../Home';
 
 const RoutesToRender = () => (
   <Switch>
     <Route
       exact
       path="/"
-      component={Header}
+      component={Home}
     />
     <Route
       exact
