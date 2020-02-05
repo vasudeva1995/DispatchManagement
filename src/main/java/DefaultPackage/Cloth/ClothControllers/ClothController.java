@@ -9,6 +9,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/app")
 public class ClothController {
@@ -17,8 +19,10 @@ public class ClothController {
     private ClothRepository clothRepositor;
 
     @RequestMapping(value = "/rest/v1/cloth", method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity addCloth(){
-        return new ResponseEntity<>("Hello World!", HttpStatus.OK);
+    public ResponseEntity<List<ClothModal>> getCloth(){
+        List<ClothModal> clothModalList = clothRepositor.findAll();
+
+        return new ResponseEntity<List<ClothModal>>(clothModalList, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/rest/v1/add-cloth", method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
