@@ -60,11 +60,11 @@ public class ClothModal {
         this.cost = cost;
     }
 
-    public Integer getUnit() {
+    public String getUnit() {
         return unit;
     }
 
-    public void setUnit(Integer unit) {
+    public void setUnit(String unit) {
         this.unit = unit;
     }
 
@@ -85,7 +85,7 @@ public class ClothModal {
     private Integer cost;
 
     @Column
-    private Integer unit;
+    private String unit;
 
     public ClothModal() {
         super();
@@ -101,7 +101,7 @@ public class ClothModal {
      * @param unit
      */
 
-    public ClothModal(Integer companyId, String sautNumber, String name, String type, Integer cost, Integer unit ){
+    public ClothModal(Integer companyId, String sautNumber, String name, String type, Integer cost, String unit ){
         super();
         this.id = id;
         this.companyId = companyId;
