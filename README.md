@@ -70,3 +70,10 @@
 add this to .eslintrc.json file to allow jsx in js files
 
  23) eslint initializing comand -> npx eslint --init
+ 
+ 
+ //For Backend
+ 
+24) Main apllication class serves the pacxkage in which it is placed
+
+25) 
