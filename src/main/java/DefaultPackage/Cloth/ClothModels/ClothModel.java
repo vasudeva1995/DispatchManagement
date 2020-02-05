@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 
-public class ClothModal {
+public class ClothModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -87,7 +87,7 @@ public class ClothModal {
     @Column
     private String unit;
 
-    public ClothModal() {
+    public ClothModel() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -101,7 +101,7 @@ public class ClothModal {
      * @param unit
      */
 
-    public ClothModal(Integer companyId, String sautNumber, String name, String type, Integer cost, String unit ){
+    public ClothModel(Integer companyId, String sautNumber, String name, String type, Integer cost, String unit ){
         super();
         this.id = id;
         this.companyId = companyId;
