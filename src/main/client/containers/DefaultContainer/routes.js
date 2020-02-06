@@ -15,7 +15,7 @@ const RoutesToRender = () => (
     />
     <Route
       exact
-      path="/app"
+      path="/form"
       component={App}
     />
     <Route

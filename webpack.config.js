@@ -7,7 +7,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const isDevelopment = process.env.NODE_ENV === 'development';
 
 module.exports = {
-  entry: './src/main/client/index.js',
+  entry: ['babel-polyfill', './src/main/client/index.js'],
   mode: 'development',
   module: {
     rules: [
@@ -29,10 +29,11 @@ module.exports = {
     filename: 'bundle.[contentHash].js',
   },
   devServer: {
+    inline: true,
     contentBase: buildDirectory,
     historyApiFallback: true,
     port: 3000,
-
+    proxy: { '/app': { target: 'http://localhost:8080', secure: false } },
   },
   plugins: [
     new HtmlWebPackPlugin({

@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import * as api from '../../api';
 
-import { simpleAction } from './appAction';
+import simpleAction from './appAction';
 
 class App extends React.Component {
   constructor(props) {
@@ -12,6 +13,12 @@ class App extends React.Component {
       password: '',
     };
     this.updateCredentials = this.updateCredentials.bind(this);
+  }
+
+  componentDidMount() {
+    const { firstAction } = this.props;
+    const url = '/app/rest/v1/cloth';
+    firstAction(url);
   }
 
   updateCredentials(key, event) {

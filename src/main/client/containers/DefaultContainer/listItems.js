@@ -14,7 +14,7 @@ import { Link } from 'react-router-dom';
 
 export const mainListItems = (
   <div>
-    <Link to="/app">
+    <Link to="/form">
       <ListItem button>
         <ListItemIcon>
           <DashboardIcon />
