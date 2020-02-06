@@ -1,52 +1,54 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import * as api from '../../api';
 
 import simpleAction from './appAction';
+import './App.scss';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      email: '',
-      password: '',
-    };
-    this.updateCredentials = this.updateCredentials.bind(this);
-  }
-
+class App extends React.PureComponent {
   componentDidMount() {
     const { firstAction } = this.props;
     const url = '/app/rest/v1/cloth';
     firstAction(url);
   }
 
-  updateCredentials(key, event) {
-    const { firstAction } = this.props;
-    if (key === 'email') {
-      this.setState({ email: event.currentTarget.value });
-    } else {
-      this.setState({ password: event.currentTarget.value });
-    }
-    firstAction(event.currentTarget.value);
-  }
-
   render() {
     const { data } = this.props;
-    const { email, password } = this.state;
-    console.log(email, password);
     return (
       <div>
-        <div>
-          <h1> email </h1>
-          <input onChange={(val) => this.updateCredentials('email', val)} />
-        </div>
-        <div>
-          <h1> pwd </h1>
-          <input onChange={(val) => this.updateCredentials('password', val)} />
-
-        </div>
-        <div>{data}</div>
+        {data.map((row) => (
+          <div key={row.id} className="entry">
+            <div>
+              <span>id:</span>
+              {row.id}
+            </div>
+            <div>
+              <span>companyId:</span>
+              {row.companyId}
+            </div>
+            <div>
+              <span>sautNumber:</span>
+              {' '}
+              {row.sautNumber}
+            </div>
+            <div>
+              <span>name:</span>
+              {row.name}
+            </div>
+            <div>
+              <span>type:</span>
+              {row.type}
+            </div>
+            <div>
+              <span>cost:</span>
+              {row.cost}
+            </div>
+            <div>
+              <span>unit</span>
+              {row.unit}
+            </div>
+          </div>
+        ))}
       </div>
     );
   }
@@ -61,12 +63,21 @@ const mapDispatchToProps = {
 };
 
 App.propTypes = {
-  data: PropTypes.string,
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      companyId: PropTypes.number,
+      name: PropTypes.string,
+      type: PropTypes.string,
+      cost: PropTypes.number,
+      unit: PropTypes.string,
+    }),
+  ),
   firstAction: PropTypes.func.isRequired,
 };
 
 App.defaultProps = {
-  data: 'initial',
+  data: [],
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

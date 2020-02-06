@@ -1,11 +1,10 @@
 import * as api from '../../api';
 
-const simpleAction = (data) => async (dispatch) => {
-  const result = await api.GET(data);
-  console.log(result);
+const simpleAction = (url) => async (dispatch) => {
+  const result = await api.GET(url);
   dispatch({
     type: 'SIMPLE_ACTION',
-    payload: data,
+    payload: result.data ? result.data : [],
   });
 };
 
