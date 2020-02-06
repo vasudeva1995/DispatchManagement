@@ -76,4 +76,4 @@ add this to .eslintrc.json file to allow jsx in js files
  
 24) Main apllication class serves the pacxkage in which it is placed
 
-25) 
+25) To fix async and await proble go to this link https://stackoverflow.com/questions/33527653/babel-6-regeneratorruntime-is-not-defined
