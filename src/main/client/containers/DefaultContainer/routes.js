@@ -4,6 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 import App from '../AppContainer/App';
 import Home from '../HomeContainer';
 import Header from '../HeaderContainer';
+import Setting from '../SettingContainer';
 
 
 const RoutesToRender = () => (
@@ -22,6 +23,11 @@ const RoutesToRender = () => (
       exact
       path="/header"
       component={Header}
+    />
+    <Route
+      exact
+      path="/setting"
+      component={Setting}
     />
   </Switch>
 );
