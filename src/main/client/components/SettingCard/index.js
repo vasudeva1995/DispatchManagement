@@ -32,7 +32,7 @@ const SettingCard = ({ item, isCardAction, isTypography }) => {
             <CardMedia
               className={classes.media}
               image={item.cardImage}
-              title="Contemplative Reptile"
+              title={item.title}
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="h2">
@@ -66,6 +66,9 @@ const SettingCard = ({ item, isCardAction, isTypography }) => {
 SettingCard.propTypes = {
   item: PropTypes.objectOf(PropTypes.shape({
     name: PropTypes.string,
+    rout: PropTypes.string,
+    cardImage: PropTypes.string,
+    title: PropTypes.string,
   })).isRequired,
   isCardAction: PropTypes.bool,
   isTypography: PropTypes.bool,

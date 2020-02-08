@@ -34,7 +34,7 @@ module.exports = {
   resolve: { extensions: ['*', '.js', '.jsx'] },
   output: {
     path: buildDirectory,
-    filename: 'bundle.[contentHash].js',
+    filename: 'bundle.js',
   },
   devServer: {
     inline: true,
