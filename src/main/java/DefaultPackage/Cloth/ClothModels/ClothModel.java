@@ -103,7 +103,6 @@ public class ClothModel {
 
     public ClothModel(Integer companyId, String sautNumber, String name, String type, Integer cost, String unit ){
         super();
-        this.id = id;
         this.companyId = companyId;
         this.sautNumber =  sautNumber;
         this.name = name;
