@@ -25,8 +25,8 @@ public class ClothController {
 
         return new ResponseEntity<List<ClothModel>>(clothModelList, HttpStatus.OK);
     }
-    @RequestMapping(value = "/rest/v1/cloth/{clotId}/get", method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<ClothModel> getOneCloth(@PathVariable("clothId") Long clothId) throws Exception {
+    @RequestMapping(value = "/rest/v1/cloth/{clothId}", method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<ClothModel> getOneCloth(@PathVariable("clothId") long clothId) throws Exception {
         Optional<ClothModel> clothModelResult = clothRepositor.findById(clothId);
         if(!clothModelResult.isPresent()){
             throw new Exception("Not found");
