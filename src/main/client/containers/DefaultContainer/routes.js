@@ -5,6 +5,7 @@ import App from '../AppContainer/App';
 import Home from '../HomeContainer';
 import Header from '../HeaderContainer';
 import Setting from '../SettingContainer';
+import Cloth from '../ClothContainer';
 
 
 const RoutesToRender = () => (
@@ -28,6 +29,11 @@ const RoutesToRender = () => (
       exact
       path="/setting"
       component={Setting}
+    />
+    <Route
+      exact
+      path="/setting/cloth"
+      component={Cloth}
     />
   </Switch>
 );

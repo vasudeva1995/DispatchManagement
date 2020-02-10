@@ -15,21 +15,25 @@ class Setting extends React.PureComponent {
           name: 'Cloth',
           route: '/setting/cloth',
           cardImage: clothImg,
+          title: 'settings for Cloths',
         },
         {
           name: 'Retailer',
           route: '/setting/retailer',
           cardImage: retailerImg,
+          title: 'settings for Retailers',
         },
         {
           name: 'Challan',
           route: '/setting/challan',
           cardImage: defaultImg,
+          title: 'settings for Challans',
         },
         {
           name: 'Latt',
           route: '/setting/latt',
           cardImage: defaultImg,
+          title: 'settings for Latts',
         },
       ],
     };
