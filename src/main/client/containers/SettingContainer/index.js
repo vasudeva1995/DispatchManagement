@@ -4,7 +4,9 @@ import SettingCard from '../../components/SettingCard';
 import clothImg from '../../assets/clothImg.jpg';
 import retailerImg from '../../assets/retailerImg.jpg';
 import defaultImg from '../../assets/default.png';
+
 import './Setting.scss';
+
 
 class Setting extends React.PureComponent {
   constructor(props) {
@@ -13,7 +15,7 @@ class Setting extends React.PureComponent {
       settingItems: [
         {
           name: 'Cloth',
-          route: '/setting/cloth',
+          route: '/cloth-setting',
           cardImage: clothImg,
           title: 'settings for Cloths',
         },
@@ -37,10 +39,6 @@ class Setting extends React.PureComponent {
         },
       ],
     };
-  }
-
-  componentDidMount() {
-    console.log('run');
   }
 
   render() {

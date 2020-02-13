@@ -1,9 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import App from '../AppContainer/App';
 import Home from '../HomeContainer';
-import Header from '../HeaderContainer';
 import Setting from '../SettingContainer';
 import Cloth from '../ClothContainer';
 
@@ -17,22 +15,12 @@ const RoutesToRender = () => (
     />
     <Route
       exact
-      path="/form"
-      component={App}
-    />
-    <Route
-      exact
-      path="/header"
-      component={Header}
-    />
-    <Route
-      exact
       path="/setting"
       component={Setting}
     />
     <Route
       exact
-      path="/setting/cloth"
+      path="/cloth-setting"
       component={Cloth}
     />
   </Switch>
