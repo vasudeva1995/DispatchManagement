@@ -4,6 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 import Home from '../HomeContainer';
 import Setting from '../SettingContainer';
 import Cloth from '../ClothContainer';
+import LotsContainer from '../Lots/index';
 
 
 const RoutesToRender = () => (
@@ -17,6 +18,11 @@ const RoutesToRender = () => (
       exact
       path="/setting"
       component={Setting}
+    />
+    <Route
+      exact
+      path="/Lots"
+      component={LotsContainer}
     />
     <Route
       exact

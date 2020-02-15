@@ -17,8 +17,8 @@ public class LotService {
     @Autowired
     private LotRepository lotRepository;
 
-    public Page<LotModel> getLots() {
-        Pageable pageSpecification = PageRequest.of(0,5);
+    public Page<LotModel> getLots(Integer pageNo) {
+        Pageable pageSpecification = PageRequest.of((pageNo - 1) ,5);
         Page<LotModel> lotModels = lotRepository.findPaginatedLots(1,pageSpecification);
         return lotModels;
     }
