@@ -1,7 +1,5 @@
 package DefaultPackage.Lot.LotModels;
 
-import org.springframework.context.annotation.Primary;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Map;

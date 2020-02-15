@@ -5,10 +5,13 @@ import { connect } from 'react-redux';
 import ClothTable from '../../components/ClothTable';
 import { getClothData } from './clothAction';
 
+import './Cloth.scss';
+
 class Cloth extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
+      isDrawerOpen: false
     };
   }
 
@@ -17,10 +20,15 @@ class Cloth extends React.PureComponent {
     getCloths();
   }
 
+
+
   render() {
     const { clothTableData } = this.props;
     return (
       <div className="cloth-setting-container">
+        <div className="cloth-setting-actions">
+          <div>add cloth</div>
+        </div>
         <ClothTable clothTableData={clothTableData} />
       </div>
     );
