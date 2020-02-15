@@ -9,6 +9,7 @@ const isDevelopment = process.env.NODE_ENV === 'development';
 module.exports = {
   entry: ['babel-polyfill', './src/main/client/index.js'],
   mode: 'development',
+  devtool:'source-map',
   module: {
     rules: [
       {

@@ -6,7 +6,7 @@ import { toggleDrawer,getLotData } from './LotActions';
 import 'antd/es/table/style/css';
 import 'antd/es/tag/style/css';
 import 'antd/es/button/style/css';
-
+import AddLot from './AddLot';
 class LotsContainer extends PureComponent {
   constructor(props) {
     super(props);
@@ -53,8 +53,10 @@ class LotsContainer extends PureComponent {
         <CusTomDrawer
           isDrawerOpen={this.props.isDrawerOpen}
           toggleDrawer={this.props.toggleDrawer}
+          jsxToRender={<AddLot/>}
+          title='Add Lot'
         />
-      </div>
+       </div>
     );
   }
 }
