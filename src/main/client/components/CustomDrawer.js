@@ -37,7 +37,7 @@ function CustomDrawer({isDrawerOpen,toggleDrawer,jsxToRender,title}) {
           width: '100%', height: '50px', background: '#f2eded', padding: '10px',
         }}
         >
-          <div style={{width:'20%',justifyContent:'space-between', display:'flex'}}>
+          <div style={{justifyContent:'space-between', display:'flex'}}>
           <CrossIcon style={{marginTop:'4px'}} onClick={()=>toggleDrawer(false)} />
           <Typography variant="h6">
             {title}

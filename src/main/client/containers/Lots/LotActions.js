@@ -12,7 +12,6 @@ export function getLotData() {
   return async (dispatch) => {
     let columns = LotService.getTableColumns();
     const lots = await LotService.getPaginationWiseLots();
-    console.log(lots);
     dispatch({type:'SET_INITIAL_LOT_DATA',payload:{columns,lots}})
   };
 }

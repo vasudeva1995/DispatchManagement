@@ -14,5 +14,11 @@ html {
             position: absolute;
             top: calc(100vh - 24vh);
         }
+        .alert_div > div > div {
+            width: 500px !important;
+        }
+        .alert_div {
+            z-index: 2000 !important;
+        }
     }
 }
