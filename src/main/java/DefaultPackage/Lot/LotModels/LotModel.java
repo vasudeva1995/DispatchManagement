@@ -9,13 +9,14 @@ import java.util.Map;
 @Entity
 @Table(name = "Lots")
 public class LotModel {
-    public LotModel(@NotNull Integer companyId, @NotNull Integer lotNo, @NotNull Integer clothNo, String brand, Map<String, Object> challans, Map<String, Object> sizes) {
+    public LotModel(String status,@NotNull Integer companyId, @NotNull Integer lotNo, @NotNull Integer clothNo, String brand, Map<String, Object> challans, Map<String, Object> sizes) {
         this.companyId = companyId;
         this.lotNo = lotNo;
         this.clothNo = clothNo;
         this.brand = brand;
         this.challans = challans;
         this.sizes = sizes;
+        this.status = status;
     }
 
     @Id
@@ -92,6 +93,18 @@ public class LotModel {
     @NotNull
     @Column
     Integer clothNo;
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    @NotNull
+    @Column
+    String status;
 
     @Column
     String brand;

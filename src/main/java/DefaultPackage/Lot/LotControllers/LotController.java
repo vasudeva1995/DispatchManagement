@@ -23,10 +23,10 @@ public class LotController {
     @Autowired
     private LotRepository lotRepository;
 
-    @RequestMapping(value="/rest/v1/getLots", method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
-    ResponseEntity<Page<LotModel>> getLots(){
-        Page<LotModel> lotModels =  lotService.getLots();
-        return new ResponseEntity<Page<LotModel>>(lotModels, HttpStatus.OK);
+    @RequestMapping(value="/rest/v1/getLots/{pageNo}", method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
+    ResponseEntity<List<LotModel>> getLots(@PathVariable("pageNo") Integer pageNo){
+        Page<LotModel> lotModels =  lotService.getLots(pageNo);
+        return new ResponseEntity<List<LotModel>>(lotModels.getContent(), HttpStatus.OK);
     }
 
     @RequestMapping(value="/rest/v1/setLot", method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
