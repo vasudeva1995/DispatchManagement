@@ -5,6 +5,6 @@ export default (state = { result: [] }, action) => {
         result: action.payload,
       };
     default:
-      return state;
+      return {...state};
   }
 };

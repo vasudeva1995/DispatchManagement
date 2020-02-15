@@ -1,6 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
+import LotsContainer from '../Lots/index';
 import App from '../AppContainer/App';
 import Home from '../HomeContainer';
 import Header from '../HeaderContainer';
@@ -19,6 +20,11 @@ const RoutesToRender = () => (
       exact
       path="/form"
       component={App}
+    />
+    <Route
+      exact
+      path="/Lots"
+      component={LotsContainer}
     />
     <Route
       exact

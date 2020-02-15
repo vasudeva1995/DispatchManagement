@@ -3,7 +3,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListSubheader from '@material-ui/core/ListSubheader';
-import DashboardIcon from '@material-ui/icons/Dashboard';
+import LotIcon from '@material-ui/icons/PostAdd';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import PeopleIcon from '@material-ui/icons/People';
 import BarChartIcon from '@material-ui/icons/BarChart';
@@ -15,12 +15,12 @@ import { Link } from 'react-router-dom';
 
 export const mainListItems = (
   <div>
-    <Link to="/form">
+    <Link to="/Lots">
       <ListItem button>
         <ListItemIcon>
-          <DashboardIcon />
+          <LotIcon />
         </ListItemIcon>
-        <ListItemText primary="Dashboard" />
+        <ListItemText primary="Lots" />
       </ListItem>
     </Link>
     <Link to="/home">

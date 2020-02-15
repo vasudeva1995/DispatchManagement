@@ -15,7 +15,11 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /(node_modules)/,
         loader: 'babel-loader',
-        options: { presets: ['@babel/env'] },
+        options: {
+                presets: ['@babel/env',
+                          '@babel/react',{
+                          'plugins': ['@babel/plugin-proposal-class-properties']}]
+            },
       },
       {
         test: /(\.css|\.scss)$/,
