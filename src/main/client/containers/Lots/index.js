@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { Table,Tag, Button } from 'antd';
 import CusTomDrawer from '../../components/CustomDrawer';
-import { toggleDrawer,getLotData } from './LotActions';
+import { toggleDrawer,getLotData,addLot } from './LotActions';
 import 'antd/es/table/style/css';
 import 'antd/es/tag/style/css';
 import 'antd/es/button/style/css';
@@ -53,7 +53,7 @@ class LotsContainer extends PureComponent {
         <CusTomDrawer
           isDrawerOpen={this.props.isDrawerOpen}
           toggleDrawer={this.props.toggleDrawer}
-          jsxToRender={<AddLot/>}
+          jsxToRender={<AddLot addLot={this.props.addLot} />}
           title='Add Lot'
         />
        </div>
@@ -69,5 +69,6 @@ columns: state.LotReducer.columns
 
 export default connect(mapStateToProps, {
   toggleDrawer,
-  getLotData
+  getLotData,
+  addLot
 })(LotsContainer);

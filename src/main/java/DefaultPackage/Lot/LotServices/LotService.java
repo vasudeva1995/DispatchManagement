@@ -18,7 +18,7 @@ public class LotService {
     private LotRepository lotRepository;
 
     public Page<LotModel> getLots(Integer pageNo) {
-        Pageable pageSpecification = PageRequest.of((pageNo - 1) ,5);
+        Pageable pageSpecification = PageRequest.of((pageNo - 1) ,5,Sort.Direction.DESC,"id");
         Page<LotModel> lotModels = lotRepository.findPaginatedLots(1,pageSpecification);
         return lotModels;
     }

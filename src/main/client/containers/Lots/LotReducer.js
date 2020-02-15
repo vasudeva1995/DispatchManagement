@@ -7,7 +7,8 @@ export default (state = initialState, action) => {
       case 'SET_INITIAL_LOT_DATA':
         return state
         .set('columns',action.payload.columns)
-        .set('lots',action.payload.lots);
+        .set('lots',action.payload.lots)
+        .set('isDrawerOpen',false);
     default:
       return state;
   }
