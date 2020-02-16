@@ -9,7 +9,7 @@ const isDevelopment = process.env.NODE_ENV === 'development';
 module.exports = {
   entry: ['babel-polyfill', './src/main/client/index.js'],
   mode: 'development',
-  devtool:'source-map',
+  devtool: 'source-map',
   module: {
     rules: [
       {
@@ -17,10 +17,16 @@ module.exports = {
         exclude: /(node_modules)/,
         loader: 'babel-loader',
         options: {
-                presets: ['@babel/env',
-                          '@babel/react',{
-                          'plugins': ['@babel/plugin-proposal-class-properties']}]
-            },
+          presets: [
+            '@babel/env',
+            '@babel/react',
+            {
+              'plugins': [
+                '@babel/plugin-proposal-class-properties'
+              ]
+            }
+          ]
+        },
       },
       {
         test: /(\.css|\.scss)$/,

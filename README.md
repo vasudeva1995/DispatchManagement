@@ -91,3 +91,7 @@ add this to .eslintrc.json file to allow jsx in js files
 
         Used for serialization of map to json string in order to save it to db or get from db  &&  send to api response
         Used for deserailization of a json string to map when we have it in use in code.
+
+
+
+30) To debug the react code from BROWSER SOURCE devtool we have to add "devtool: 'source-map'" in webpack, to show the react code not js converted code
