@@ -8,6 +8,7 @@ export default (state = initialState, action) => {
         return state
         .set('columns',action.payload.columns)
         .set('lots',action.payload.lots)
+        .set('paginationConfig',action.payload.paginationConfig)
         .set('isDrawerOpen',false);
     default:
       return state;

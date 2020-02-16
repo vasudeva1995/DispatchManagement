@@ -7,7 +7,9 @@ import 'antd/es/table/style/css';
 import 'antd/es/tag/style/css';
 import 'antd/es/button/style/css';
 import AddLot from './AddLot';
-class LotsContainer extends PureComponent {
+import Pager from '../../components/Pager';
+import { display } from '@material-ui/system';
+ class LotsContainer extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -15,7 +17,11 @@ class LotsContainer extends PureComponent {
   }
 
   componentDidMount(){
-      this.props.getLotData();
+      this.props.getLotData({
+        range:[1,10],
+        pageNumber:1,
+        pageSize:10
+      });
   }
 
   getTableHeaderToRender = (tableHeader) =>{
@@ -37,11 +43,21 @@ class LotsContainer extends PureComponent {
     }
     return tableHeader;
   }
+  onPagerInteraction = (pageNumber, pageSize) => {
+    const clonedPaginationConfig = {};
+    clonedPaginationConfig.pageNumber = pageNumber;
+    clonedPaginationConfig.pageSize = pageSize;
+    clonedPaginationConfig.range = [(pageNumber - 1) * pageSize + 1, (pageNumber - 1) * pageSize + pageSize];
+    this.props.getLotData(clonedPaginationConfig);
+  };
 
   render() {
     return (
       <div>
-        <Button style={{marginLeft:'calc(100% - 100px)'}} onClick = {()=>this.props.toggleDrawer(true)}>+ Add Lot</Button>
+        <div><Button style={{marginLeft:'calc(100% - 100px)'}} onClick = {()=>this.props.toggleDrawer(true)}>+ Add Lot</Button>
+        <Pager
+             {...Object.assign({}, this.props.paginationConfig, { onPagerInteraction: this.onPagerInteraction })}
+        /></div>
         <Table 
           style={{background:'#B0C4DE', marginTop:'20px'}} 
           size={'small'} 
@@ -64,7 +80,8 @@ class LotsContainer extends PureComponent {
 const mapStateToProps = (state) => ({ 
 isDrawerOpen: state.LotReducer.isDrawerOpen,
 lots: state.LotReducer.lots,
-columns: state.LotReducer.columns 
+columns: state.LotReducer.columns,
+paginationConfig: state.LotReducer.paginationConfig
 });
 
 export default connect(mapStateToProps, {
