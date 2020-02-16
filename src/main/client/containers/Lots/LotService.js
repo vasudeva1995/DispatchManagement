@@ -55,6 +55,16 @@ class LotService{
           ];
           return columns;
     }
+    getSizeWiseObject = (sizes) => {
+         return Object.values(sizes).reduce((acc,val)=>{
+            acc[val.size] = val;
+            return acc;
+         },{})
+    }
+    addLotData = async (lot) => {
+      const result = await api.POST('/app/rest/v1/setLot',lot);
+      return result;
+    }
 }
 
 export default new LotService();

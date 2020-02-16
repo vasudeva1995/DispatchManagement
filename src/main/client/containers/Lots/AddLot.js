@@ -1,7 +1,5 @@
 import React,{useState} from 'react';
-import { Form,Input,Button } from 'antd';
-import { Typography } from '@material-ui/core';
-import CrossIcon from '@material-ui/icons/Close';
+import { Form,Input,Button } from 'antd';;
 import MenuItem from '@material-ui/core/MenuItem';
 import 'antd/es/form/style/css';
 import 'antd/es/input/style/css';
@@ -21,7 +19,7 @@ const formItemLayout = {
   },
 };
 
-function AddLot({toggleDrawer}) {
+function AddLot({addLot}) {
 
 const [Lots,setLot] =useState({
   lotNo:'',
@@ -31,7 +29,6 @@ const [Lots,setLot] =useState({
   sizes:{}
 });
 
-console.log(Lots);
 const [count, setCount] = useState(0);
 
   return (
@@ -114,8 +111,10 @@ const [count, setCount] = useState(0);
       
           </Form.Item>
       </Form>
-      
-      <Button style={{position:'absolute',bottom:'0px',left:'0px',width:'100%', height:'50px'}} type="primary" htmlType="submit">
+      <div style={{position:'relative'}}>
+      </div>
+      <Button onClick = {()=>addLot(Lots)}
+       style={{position:'absolute',bottom:'0px',left:'0px',width:'100%', height:'50px'}} type="primary" htmlType="submit">
             Add
       </Button>
     </div>
