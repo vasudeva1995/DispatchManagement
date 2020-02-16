@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'antd';
 import { connect } from 'react-redux';
-import { withAlert } from "react-alert";
+import { message } from 'antd';
 
 import ClothTable from '../../components/ClothTable';
 import { getClothData, addClothData } from './clothAction';
@@ -38,16 +38,16 @@ class Cloth extends React.PureComponent {
     )
   }
   addCloth = clothData => {
-    const { addCloth, alert } = this.props;
+    const { addCloth } = this.props;
     return new Promise((resolve, reject) => {
       addCloth({companyId: 1, ...clothData}, resolve, reject);
     })
     .then(success=>{
-      alert.success("Cloth added succussfully")
+      message.success('Successfully added');
       this.toggleDrawer();
     })
     .catch(error=> {
-      alert.error("Server error please try again")
+      message.error("Server error please try again");
     })
   }
   render() {
@@ -86,4 +86,4 @@ Cloth.propTypes = {
   clothTableData: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withAlert()(Cloth));
+export default connect(mapStateToProps, mapDispatchToProps)(Cloth);
