@@ -9,7 +9,8 @@ const InitialState = Record({
     'Taylor':'Washing',
     'Washing': 'Packing',
     'Packing' : 'In Stock'
-  }
+  },
+  paginationConfig:{}
 });
 
 export default new InitialState();

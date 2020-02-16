@@ -1,8 +1,8 @@
 import * as api from '../../api';
 class LotService{
-    getPaginationWiseLots = async() => {
+    getPaginationWiseLots = async(paginationConfig) => {
         
-         let lots = await api.GET('/app/rest/v1/getLots/'+1);
+         let lots = await api.GET('/app/rest/v1/getLots/'+[paginationConfig.pageNumber]);
         return lots.data;
     }
     getTableColumns = () => {
