@@ -19,7 +19,7 @@ const formItemLayout = {
   },
 };
 
-function AddLot({addLot}) {
+function AddLot({addLot,statusMap,dataStores}) {
 
 const [Lots,setLot] =useState({
   lotNo:'',
@@ -49,8 +49,7 @@ const [count, setCount] = useState(0);
                     help={''}
                   >
             <Select style={{width:'80%'}} onChange={(e)=>setLot({...Lots, clothNo : e.target.value})}>      
-                <MenuItem key="10" value='10'>Ten</MenuItem>
-                <MenuItem key="20" value='20'>Twenty</MenuItem>
+                {Object.values(dataStores.cloths).map(obj=> <MenuItem key={obj.id} value={obj.id}>{obj.name}</MenuItem>)}
             </Select>
           </Form.Item>
 
@@ -61,20 +60,7 @@ const [count, setCount] = useState(0);
                     help={''}
                   >
             <Select style={{width:'80%'}} onChange={(e)=>setLot({...Lots, brand : e.target.value})}>      
-                <MenuItem key="10" value='10'>Ten</MenuItem>
-                <MenuItem key="20" value='20'>Twenty</MenuItem>
-            </Select>
-          </Form.Item>
-
-          <Form.Item
-                    {...formItemLayout}
-                    validateStatus={true}
-                    label='Tailor'
-                    help={''}
-                  >
-            <Select style={{width:'80%'}} onChange={(e)=>setLot({...Lots, status : e.target.value})}>      
-                <MenuItem key="10" value='10'>Ten</MenuItem>
-                <MenuItem key="20" value='20'>Twenty</MenuItem>
+            {Object.values(dataStores.cloths).map(obj=> <MenuItem key={obj.id} value={obj.id}>{obj.name}</MenuItem>)}
             </Select>
           </Form.Item>
 
@@ -113,7 +99,7 @@ const [count, setCount] = useState(0);
       </Form>
       <div style={{position:'relative'}}>
       </div>
-      <Button onClick = {()=>addLot(Lots)}
+      <Button onClick = {()=>addLot(Lots,statusMap)}
        style={{position:'absolute',bottom:'0px',left:'0px',width:'100%', height:'50px'}} type="primary" htmlType="submit">
             Add
       </Button>

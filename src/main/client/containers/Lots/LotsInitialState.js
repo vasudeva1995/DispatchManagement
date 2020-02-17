@@ -10,6 +10,7 @@ const InitialState = Record({
     'Washing': 'Packing',
     'Packing' : 'In Stock'
   },
+  dataStores:{},
   paginationConfig:{}
 });
 

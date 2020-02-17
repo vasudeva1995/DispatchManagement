@@ -2,13 +2,12 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { Table,Tag, Button } from 'antd';
 import CusTomDrawer from '../../components/CustomDrawer';
-import { toggleDrawer,getLotData,addLot } from './LotActions';
+import { toggleDrawer,getLotData,addLot,getLotDataOnMount } from './LotActions';
 import 'antd/es/table/style/css';
 import 'antd/es/tag/style/css';
 import 'antd/es/button/style/css';
 import AddLot from './AddLot';
 import Pager from '../../components/Pager';
-import { display } from '@material-ui/system';
  class LotsContainer extends PureComponent {
   constructor(props) {
     super(props);
@@ -17,11 +16,11 @@ import { display } from '@material-ui/system';
   }
 
   componentDidMount(){
-      this.props.getLotData({
+      this.props.getLotDataOnMount({
         range:[1,10],
         pageNumber:1,
         pageSize:10
-      });
+      },this.props.statusMap,'calledFromMount');
   }
 
   getTableHeaderToRender = (tableHeader) =>{
@@ -30,7 +29,19 @@ import { display } from '@material-ui/system';
     {
       if(obj.key === 'sizes')
       {
-        obj.render = data => <Button style={{background:'orange'}}>View</Button>
+        obj.render = data => <div style={{color:'orange'}}>View</div>
+      }
+      if(obj.key.includes('-status'))
+      {
+        obj.render = data => <div style={{color:'#138D75'}}>View</div>
+      }
+      if(obj.key === 'clothNo')
+      {
+        obj.render = data => this.props.dataStores.cloths[data] ? this.props.dataStores.cloths[data].name : data;
+      }
+      if(obj.key === 'brand')
+      {
+        obj.render = data => this.props.dataStores.brands[data] ? this.props.dataStores.brands[data].name : data
       }
       if(obj.key === 'status')
       {
@@ -48,7 +59,7 @@ import { display } from '@material-ui/system';
     clonedPaginationConfig.pageNumber = pageNumber;
     clonedPaginationConfig.pageSize = pageSize;
     clonedPaginationConfig.range = [(pageNumber - 1) * pageSize + 1, (pageNumber - 1) * pageSize + pageSize];
-    this.props.getLotData(clonedPaginationConfig);
+    this.props.getLotData(clonedPaginationConfig,this.props.statusMap);
   };
 
   render() {
@@ -69,7 +80,7 @@ import { display } from '@material-ui/system';
         <CusTomDrawer
           isDrawerOpen={this.props.isDrawerOpen}
           toggleDrawer={this.props.toggleDrawer}
-          jsxToRender={<AddLot addLot={this.props.addLot} />}
+          jsxToRender={<AddLot dataStores={this.props.dataStores} addLot={this.props.addLot} statusMap={this.props.statusMap} />}
           title='Add Lot'
         />
        </div>
@@ -81,11 +92,14 @@ const mapStateToProps = (state) => ({
 isDrawerOpen: state.LotReducer.isDrawerOpen,
 lots: state.LotReducer.lots,
 columns: state.LotReducer.columns,
-paginationConfig: state.LotReducer.paginationConfig
+paginationConfig: state.LotReducer.paginationConfig,
+statusMap: state.LotReducer.statusMap,
+dataStores: state.LotReducer.dataStores
 });
 
 export default connect(mapStateToProps, {
   toggleDrawer,
   getLotData,
-  addLot
+  addLot,
+  getLotDataOnMount
 })(LotsContainer);
