@@ -11,4 +11,6 @@ public interface LotRepository extends JpaRepository<LotModel,Long> {
     @Query("select a from LotModel a where a.companyId = ?1")
     Page<LotModel> findPaginatedLots(Integer companyId,Pageable pageSpecification);
 
+    @Query("select case when count(l)>0 then true else false end from LotModel l where l.lotNo = ?1")
+    Boolean checkUniqueLotNumber(Integer lotNumber);
 }

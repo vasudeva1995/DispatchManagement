@@ -32,8 +32,13 @@ public class LotController {
     @RequestMapping(value="/rest/v1/setLot", method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
     ResponseEntity setLot(@RequestBody LotModel lot) throws Exception{
 
-        LotModel lotResult = lotRepository.save(lot);
-        return new ResponseEntity(lotResult, HttpStatus.OK);
+        Boolean isNotUniqueLotNumber = lotService.checkIsUniqueLotNumber(lot.getLotNo());
+        if(!isNotUniqueLotNumber) {
+            LotModel lotResult = lotRepository.save(lot);
+            return new ResponseEntity(lotResult, HttpStatus.OK);
+        }
+        else
+            throw new Exception("Lot number already exists");
     }
 
     @RequestMapping(value="/rest/v1/getLot/{lotId}", method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
