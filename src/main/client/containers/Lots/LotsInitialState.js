@@ -3,10 +3,11 @@ import { Record } from 'immutable';
 const InitialState = Record({
   isDrawerOpen: false,
   columns: [],
+  lotsMap: {},
   lots: [],
   statusMap: {
-    'Initiated':'Taylor',
-    'Taylor':'Washing',
+    'Initiated':'Tailor',
+    'Tailor':'Washing',
     'Washing': 'Packing',
     'Packing' : 'In Stock'
   },

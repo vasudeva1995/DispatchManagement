@@ -95,3 +95,9 @@ add this to .eslintrc.json file to allow jsx in js files
 
 
 30) To debug the react code from BROWSER SOURCE devtool we have to add "devtool: 'source-map'" in webpack, to show the react code not js converted code
+
+31)     @Modifying is used for updating quaery
+
+32) Add localhost to host and postgres to name to connect to pgadmin
+
+33) When use convert for serialization, then pass data as map, jpa will run convert      serializer before inserting data to db.

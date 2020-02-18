@@ -59,7 +59,7 @@ class LotService{
             },
             {
                 title: 'Move Status',
-                dataIndex: 'moveStatus',
+                dataIndex: 'lotNo',
                 key: 'moveStatus',
                 width: 200,
                 align: 'center',
@@ -90,19 +90,24 @@ class LotService{
       )
     }
 
-    convertListToMap = (dataList) => {
+    convertListToMap = (dataList,key) => {
       console.log(dataList);
       return dataList.reduce((acc,obj)=> {
-        acc[obj.id] = obj;
+        acc[obj[key]] = obj;
         return acc;
       },{})
     }
 
     formatDataStores = (dataStores) => {
-        dataStores.cloths = this.convertListToMap(dataStores.cloths);
-        dataStores.brands = this.convertListToMap(dataStores.brands);
-        dataStores.tailors = this.convertListToMap(dataStores.taylors);
+        dataStores.cloths = this.convertListToMap(dataStores.cloths,'id');
+        dataStores.brands = this.convertListToMap(dataStores.brands,'id');
+        dataStores.tailors = this.convertListToMap(dataStores.taylors,'id');
         return dataStores;
+    }
+
+    moveToNextStatus = async (lotNo,challans,status) => {
+      const result = await api.PUT('/app/rest/v1/updateChallans',{lotNo,challans,status});
+      return result;
     }
  }
 

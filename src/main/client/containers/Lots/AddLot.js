@@ -74,7 +74,7 @@ const [count, setCount] = useState(0);
             sizes:{...Lots.sizes,[count]:{}}
             })
             setCount(count+1)
-          }}
+          }} // added here so that common modules can be made for status
            style={{ background:'#20B2AA',color:'white', marginBottom:'10px'}}>+  Add Size</Button> 
            <div style={{display:'flex',justifyContent:'space-between', marginBottom:'10px' }}>
               <div style={{width:'20%',color:'#20B2AA'}}>Size</div>

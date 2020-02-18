@@ -2,12 +2,13 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { Table,Tag, Button } from 'antd';
 import CusTomDrawer from '../../components/CustomDrawer';
-import { toggleDrawer,getLotData,addLot,getLotDataOnMount } from './LotActions';
+import { toggleDrawer,getLotData,addLot,getLotDataOnMount,moveToNextStatus } from './LotActions';
 import 'antd/es/table/style/css';
 import 'antd/es/tag/style/css';
 import 'antd/es/button/style/css';
 import AddLot from './AddLot';
 import Pager from '../../components/Pager';
+import Challan from './Challan';
  class LotsContainer extends PureComponent {
   constructor(props) {
     super(props);
@@ -49,7 +50,7 @@ import Pager from '../../components/Pager';
       }
       if(obj.key === 'moveStatus')
       {
-        obj.render = data => <Button onClick={()=>this.props.toggleDrawer(true)} style={{width:150, background:'#FA8072'}}>Next Status</Button>
+        obj.render = data => <Button onClick={()=>{this.props.toggleDrawer(data)}} style={{width:150, background:'#FA8072'}}>{this.props.statusMap[this.props.lotsMap[data].status]}</Button>
       }
     }
     return tableHeader;
@@ -65,7 +66,7 @@ import Pager from '../../components/Pager';
   render() {
     return (
       <div>
-        <div><Button style={{marginLeft:'calc(100% - 100px)'}} onClick = {()=>this.props.toggleDrawer(true)}>+ Add Lot</Button>
+        <div><Button style={{marginLeft:'calc(100% - 100px)'}} onClick = {()=>this.props.toggleDrawer('addLot')}>+ Add Lot</Button>
         <Pager
              {...Object.assign({}, this.props.paginationConfig, { onPagerInteraction: this.onPagerInteraction })}
         /></div>
@@ -80,8 +81,10 @@ import Pager from '../../components/Pager';
         <CusTomDrawer
           isDrawerOpen={this.props.isDrawerOpen}
           toggleDrawer={this.props.toggleDrawer}
-          jsxToRender={<AddLot dataStores={this.props.dataStores} addLot={this.props.addLot} statusMap={this.props.statusMap} />}
-          title='Add Lot'
+          jsxToRender={this.props.isDrawerOpen === 'addLot'?
+           <AddLot dataStores={this.props.dataStores} addLot={this.props.addLot} statusMap={this.props.statusMap} />
+          :<Challan moveToNextStatus={this.props.moveToNextStatus} lot={this.props.lotsMap[this.props.isDrawerOpen]} statusMap={this.props.statusMap} />}
+          title={this.props.isDrawerOpen === 'addLot'?'Add Lot':'Move Status'}
         />
        </div>
     );
@@ -91,6 +94,7 @@ import Pager from '../../components/Pager';
 const mapStateToProps = (state) => ({ 
 isDrawerOpen: state.LotReducer.isDrawerOpen,
 lots: state.LotReducer.lots,
+lotsMap: state.LotReducer.lotsMap,
 columns: state.LotReducer.columns,
 paginationConfig: state.LotReducer.paginationConfig,
 statusMap: state.LotReducer.statusMap,
@@ -101,5 +105,6 @@ export default connect(mapStateToProps, {
   toggleDrawer,
   getLotData,
   addLot,
-  getLotDataOnMount
+  getLotDataOnMount,
+  moveToNextStatus
 })(LotsContainer);
