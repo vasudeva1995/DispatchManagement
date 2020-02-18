@@ -5,6 +5,7 @@ import Home from '../HomeContainer';
 import Setting from '../SettingContainer';
 import Cloth from '../ClothContainer';
 import LotsContainer from '../Lots/index';
+import Retailer from '../RetailerContainer';
 
 
 const RoutesToRender = () => (
@@ -28,6 +29,11 @@ const RoutesToRender = () => (
       exact
       path="/cloth-setting"
       component={Cloth}
+    />
+    <Route
+      exact
+      path="/retailer-setting"
+      component={Retailer}
     />
   </Switch>
 );

@@ -10,53 +10,6 @@ import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 
-const columns = [
-  {
-    id: 'id', label: 'Id', align: 'left', minWidth: 50,
-  },
-  {
-    id: 'name', label: 'Name', align: 'left', minWidth: 200,
-  },
-  {
-    id: 'sautNumber', label: 'Saut Number', align: 'left', minWidth: 100,
-  },
-  {
-    id: 'type',
-    label: 'Type',
-    minWidth: 100,
-    align: 'left',
-    format: (value) => value.toLocaleString(),
-  },
-  {
-    id: 'unit',
-    label: 'Unit',
-    minWidth: 100,
-    align: 'left',
-    format: (value) => value.toLocaleString(),
-  },
-  {
-    id: 'cost',
-    label: 'Cost',
-    minWidth: 100,
-    align: 'left',
-    format: (value) => value,
-  },
-];
-
-function createData(clothTableData) {
-  const array = [];
-  clothTableData.forEach((item) => {
-    array.push({
-      id: item.id,
-      name: item.name,
-      sautNumber: item.sautNumber,
-      type: item.type,
-      unit: item.unit,
-      cost: item.cost,
-    });
-  });
-  return array;
-}
 
 const useStyles = makeStyles({
   root: {
@@ -67,12 +20,12 @@ const useStyles = makeStyles({
   },
 });
 
-export default function ClothTable({ clothTableData }) {
+export default function TableWithPagination({ header , tableData }) {
   const classes = useStyles();
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
-  const rows = createData(clothTableData);
+  const rows = tableData;
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -89,7 +42,7 @@ export default function ClothTable({ clothTableData }) {
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
-              {columns.map((column) => (
+              {header.map((column) => (
                 <TableCell
                   key={column.id}
                   align={column.align}
@@ -103,7 +56,7 @@ export default function ClothTable({ clothTableData }) {
           <TableBody>
             {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => (
               <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
-                {columns.map((column) => {
+                {header.map((column) => {
                   const value = row[column.id];
                   return (
                     <TableCell key={column.id} align={column.align}>
@@ -129,6 +82,7 @@ export default function ClothTable({ clothTableData }) {
   );
 }
 
-ClothTable.propTypes = {
-  clothTableData: PropTypes.arrayOf(PropTypes.object).isRequired,
+TableWithPagination.propTypes = {
+  tableData: PropTypes.arrayOf(PropTypes.object).isRequired,
+  header: PropTypes.arrayOf(PropTypes.object).isRequired,
 };

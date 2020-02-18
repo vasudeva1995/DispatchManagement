@@ -21,7 +21,7 @@ class Setting extends React.PureComponent {
         },
         {
           name: 'Retailer',
-          route: '/setting/retailer',
+          route: '/retailer-setting',
           cardImage: retailerImg,
           title: 'settings for Retailers',
         },
