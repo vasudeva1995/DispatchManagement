@@ -108,10 +108,16 @@ import Challan from './Challan';
   render() {
     return (
       <div>
-        <div><Button style={{marginLeft:'calc(100% - 100px)'}} onClick = {()=>this.props.toggleDrawer('addLot')}>+ Add Lot</Button>
-        <Pager
-             {...Object.assign({}, this.props.paginationConfig, { onPagerInteraction: this.onPagerInteraction })}
-        /></div>
+         <div style={{marginBottom:'20px', display:'flex',justifyContent: 'flex-end'}}>
+            <div style={{width:'10%'}}>
+              <Button style={{background:'#E5EDF3',fontSize:'15px', marginLeft:'calc(100% - 100px)'}} onClick = {()=>this.props.toggleDrawer('addLot')}>+ Add Lot</Button>
+            </div>
+            <div style={{width:'10%',padding:'5px'}}>
+              <Pager
+                {...Object.assign({}, this.props.paginationConfig, { onPagerInteraction: this.onPagerInteraction })}
+              />
+            </div>
+         </div>
         <Table 
           style={{background:'#B0C4DE', marginTop:'20px'}} 
           size={'small'} 
