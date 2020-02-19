@@ -11,6 +11,7 @@ const InitialState = Record({
     'Washing': 'Packing',
     'Packing' : 'In Stock'
   },
+  statusList: ['Initiated','Tailor','Washing','Packing','In Stock'],
   dataStores:{},
   paginationConfig:{}
 });
