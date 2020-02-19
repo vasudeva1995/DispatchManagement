@@ -38,6 +38,11 @@ class RetailerService {
     const result = await api.GET(url);
     return result.data;
   }
+  addRetailer = async(data) => {
+    const url = '/app/rest/v1/add-retailer';
+    const result = await api.POST(url, data);
+    return result.data;
+  }
 }
 
 export default new RetailerService();

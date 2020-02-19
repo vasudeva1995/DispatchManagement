@@ -6,5 +6,5 @@ import retailer from './containers/RetailerContainer/retailerReducer';
 export default combineReducers({
   cloth,
   LotReducer,
-  retailer
+  retailer,
 });

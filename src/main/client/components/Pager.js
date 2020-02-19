@@ -25,7 +25,6 @@ class Pager extends React.Component {
   }
 
   handlePageSizeChange(pageSize) {
-    console.log('handlePageSizeChange, pageSize', pageSize, 'this.props', this.props);
     this.setState({ visible: false });
     this.props.onPagerInteraction(1, pageSize);
   }
@@ -72,7 +71,6 @@ class Pager extends React.Component {
                 renderItem={item => (
                   <List.Item
                     onClick={e => {
-                      console.log(e);
                       this.handlePageSizeChange(Number(item.split(' ')[0]));
                     }}
                   >

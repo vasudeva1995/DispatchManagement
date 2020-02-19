@@ -1,4 +1,3 @@
-import * as api from '../../api';
 import retailerService from './retailerService';
 
 export const GET_RETAILER_DATA = 'app/retailer/GET_RETAILER_DATA';
@@ -14,5 +13,19 @@ export const getRetailerData = () => async (dispatch) => {
     });
   } else {
     console.log('SERVER ERROR');
+  }
+};
+
+export const addRetailer = (data, resolve, reject) => async (dispatch) => {
+  const retailerData = await retailerService.addRetailer(data);
+  if (retailerData) {
+    dispatch({
+      type: ADD_RETAILER_DATA,
+      payload: retailerData,
+    });
+    resolve('success');
+  } else {
+    console.log('SERVER ERROR');
+    reject('server error');
   }
 };

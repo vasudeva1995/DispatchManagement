@@ -91,7 +91,6 @@ class LotService{
     }
 
     convertListToMap = (dataList) => {
-      console.log(dataList);
       return dataList.reduce((acc,obj)=> {
         acc[obj.id] = obj;
         return acc;
