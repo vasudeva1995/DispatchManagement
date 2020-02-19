@@ -19,7 +19,7 @@ const formItemLayout = {
   },
 };
 
-function AddLot({addLot,statusMap,dataStores}) {
+function AddLot({addLot,statusMap,dataStores,statusList}) {
 
 const [Lots,setLot] =useState({
   lotNo:'',
@@ -99,7 +99,7 @@ const [count, setCount] = useState(0);
       </Form>
       <div style={{position:'relative'}}>
       </div>
-      <Button onClick = {()=>addLot(Lots,statusMap)}
+      <Button onClick = {()=>addLot(Lots,statusList)}
        style={{position:'absolute',bottom:'0px',left:'0px',width:'100%', height:'50px'}} type="primary" htmlType="submit">
             Add
       </Button>

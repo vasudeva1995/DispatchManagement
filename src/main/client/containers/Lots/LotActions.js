@@ -8,18 +8,19 @@ export function toggleDrawer(isDrawerOpen) {
   };
 } 
 
-export function getLotDataOnMount(paginationConfig,statusMap) {
+export function getLotDataOnMount(paginationConfig,statusList) {
   return async (dispatch) => {
-    let columns = LotService.getTableColumns(statusMap);
+    let columns = LotService.getTableColumns(statusList);
     let dataStores = await LotService.getDataStores();
     dataStores = LotService.formatDataStores(dataStores);
     let lots = await LotService.getPaginationWiseLots(paginationConfig);
+    lots = LotService.setStatusToLots(lots,statusList);
     let lotsMap = LotService.convertListToMap(lots,'lotNo');    
     dispatch({type:'SET_INITIAL_LOT_DATA',payload:{columns,lotsMap,lots,paginationConfig,dataStores}})
   };
 }
 
-export function getLotData(paginationConfig) {
+export function getLotData(paginationConfig,statusList) {
   return async (dispatch) => {
     let lots = await LotService.getPaginationWiseLots(paginationConfig);
     if(!lots.length)
@@ -27,13 +28,14 @@ export function getLotData(paginationConfig) {
       paginationConfig = {...paginationConfig , pageNumber: paginationConfig.pageNumber - 1, range:[paginationConfig.range[0] - paginationConfig.pageSize , paginationConfig.range[1] - paginationConfig.pageSize]};
       lots = await LotService.getPaginationWiseLots(paginationConfig);
     }
+      lots = LotService.setStatusToLots(lots,statusList);
       const lotsMap = LotService.convertListToMap(lots,'lotNo');
     dispatch({type:'SET_LOT_DATA',payload:{lots,lotsMap,paginationConfig}})
   };
 }
 
 
-export function addLot(Lot,statusMap) {
+export function addLot(Lot,statusList) {
   return async (dispatch) => {
     let clonedLot = { ...Lot,  sizes: LotService.getSizeWiseObject(Lot.sizes), status: 'Initiated',companyId:'1'};
     let result = await LotService.addLotData(clonedLot);
@@ -43,7 +45,7 @@ export function addLot(Lot,statusMap) {
         range:[1,10],
         pageNumber:1,
         pageSize:10
-      },statusMap));
+      },statusList));
     }
     else
     {
@@ -52,7 +54,7 @@ export function addLot(Lot,statusMap) {
   };
 }
 
-export function moveToNextStatus(lotNo,challans,status){
+export function moveToNextStatus(lotNo,challans,status,statusList){
   return async (dispatch) => {
    const result = await LotService.moveToNextStatus(lotNo,JSON.stringify(challans),status);
    if(result.status === 200)
@@ -61,7 +63,7 @@ export function moveToNextStatus(lotNo,challans,status){
       range:[1,10],
       pageNumber:1,
       pageSize:10
-    }));
+    },statusList));
      message.success('Status updated successfully');
    }
    else
