@@ -19,7 +19,9 @@ const formItemLayout = {
   },
 };
 
-function AddLot({ addLot, statusMap, dataStores }) {
+function AddLot({
+  addLot, statusMap, dataStores, statusList,
+}) {
   const [Lots, setLot] = useState({
     lotNo: '',
     clothNo: '',
@@ -76,10 +78,10 @@ function AddLot({ addLot, statusMap, dataStores }) {
                 sizes: { ...Lots.sizes, [count]: {} },
               });
               setCount(count + 1);
-            }}
+            }} // added here so that common modules can be made for status
             style={{ background: '#20B2AA', color: 'white', marginBottom: '10px' }}
           >
-+  Add Size
+            +  Add Size
           </Button>
           <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>
             <div style={{ width: '20%', color: '#20B2AA' }}>Size</div>
@@ -110,7 +112,7 @@ function AddLot({ addLot, statusMap, dataStores }) {
       </Form>
       <div style={{ position: 'relative' }} />
       <Button
-        onClick={() => addLot(Lots, statusMap)}
+        onClick={() => addLot(Lots, statusList)}
         style={{
           position: 'absolute', bottom: '0px', left: '0px', width: '100%', height: '50px',
         }}

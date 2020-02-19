@@ -5,11 +5,11 @@ class LotService{
          let lots = await api.GET('/app/rest/v1/getLots/'+[paginationConfig.pageNumber]);
         return lots.data;
     }
-    getTableColumns = (statusMap) => {
-        const statusArray = Object.keys(statusMap).reduce((acc,status)=>{
+    getTableColumns = (statusList) => {
+        const statusArray = statusList.slice(1,statusList.length - 1).reduce((acc,status)=>{
           const statusObj = {
             title: `${status} status`,
-            dataIndex: `${status}-status`,
+            dataIndex: status,
             key: `${status}-status`,
             width: 200,
             align: 'center',
@@ -59,7 +59,7 @@ class LotService{
             },
             {
                 title: 'Move Status',
-                dataIndex: 'moveStatus',
+                dataIndex: 'lotNo',
                 key: 'moveStatus',
                 width: 200,
                 align: 'center',
@@ -90,18 +90,37 @@ class LotService{
       )
     }
 
-    convertListToMap = (dataList) => {
+    convertListToMap = (dataList,key) => {
+      console.log(dataList);
       return dataList.reduce((acc,obj)=> {
-        acc[obj.id] = obj;
+        acc[obj[key]] = obj;
         return acc;
       },{})
     }
 
     formatDataStores = (dataStores) => {
-        dataStores.cloths = this.convertListToMap(dataStores.cloths);
-        dataStores.brands = this.convertListToMap(dataStores.brands);
-        dataStores.tailors = this.convertListToMap(dataStores.taylors);
+        dataStores.cloths = this.convertListToMap(dataStores.cloths,'id');
+        dataStores.brands = this.convertListToMap(dataStores.brands,'id');
+        dataStores.tailors = this.convertListToMap(dataStores.taylors,'id');
         return dataStores;
+    }
+
+    moveToNextStatus = async (lotNo,challans,status) => {
+      const result = await api.PUT('/app/rest/v1/updateChallans',{lotNo,challans,status});
+      return result;
+    }
+
+    setStatusToLots = (lots,statusList) => {
+
+     for(let i = 0; i < lots.length ; i++)
+     {
+       let lot = lots[i];
+       for(status of statusList){
+         lot[status] = status;
+       }
+       lots[i] = lot;
+     }
+       return lots;
     }
  }
 

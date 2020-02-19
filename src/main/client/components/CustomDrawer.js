@@ -44,7 +44,7 @@ function CustomDrawer({
             <Typography variant="h6">
               {title}
             </Typography>
-            <CrossIcon style={{ marginTop: '4px' }} onClick={() => toggleDrawer(false)} />
+            <CrossIcon style={{ marginTop: '4px' }} onClick={toggleDrawer} />
           </div>
         </div>
         {jsxToRender}

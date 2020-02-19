@@ -107,11 +107,11 @@ public class LotModel {
     @Column
     String brand;
 
-    @Column
+    @Column(columnDefinition="TEXT")
     @Convert(converter = HashMapConverter.class)
     private Map<String, Object> challans;  // status wise (taylor,washing,packing) json
 
-    @Column
+    @Column(columnDefinition="TEXT")
     @Convert(converter = HashMapConverter.class)
     private Map<String, Object> sizes;  // size wise count json
 

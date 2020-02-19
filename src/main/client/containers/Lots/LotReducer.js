@@ -8,12 +8,14 @@ export default (state = initialState, action) => {
       return state
         .set('columns', action.payload.columns)
         .set('lots', action.payload.lots)
+        .set('lotsMap', action.payload.lotsMap)
         .set('paginationConfig', action.payload.paginationConfig)
         .set('dataStores', action.payload.dataStores)
         .set('isDrawerOpen', false);
     case 'SET_LOT_DATA':
       return state
         .set('lots', action.payload.lots)
+        .set('lotsMap', action.payload.lotsMap)
         .set('paginationConfig', action.payload.paginationConfig)
         .set('isDrawerOpen', false);
     default:
