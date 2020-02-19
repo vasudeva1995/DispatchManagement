@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+
 import { Form, Input, Button } from 'antd';
 import 'antd/es/form/style/css';
 import 'antd/es/input/style/css';
@@ -16,13 +18,12 @@ const formItemLayout = {
   },
 };
 
-function AddClothForm({ addCloth }) {
+function AddRetailerForm({ addRetailer }) {
   const [clothData, setClothData] = useState({
     name: '',
-    sautNumber: '',
-    type: '',
-    unit: '',
-    cost: 0,
+    mobile: '',
+    adress: '',
+    shopName: '',
   });
 
   return (
@@ -34,49 +35,40 @@ function AddClothForm({ addCloth }) {
           label="Name"
           help=""
         >
-          <Input onChange={(e) => setClothData({ ...clothData, name: e.target.value })} style={{ width: '80%' }} placeholder="Cloth name" />
+          <Input onChange={(e) => setClothData({ ...clothData, name: e.target.value })} style={{ width: '80%' }} placeholder="Retailer name" />
         </Form.Item>
 
         <Form.Item
           {...formItemLayout}
           validateStatus
-          label="Saut Number"
+          label="Mobile Number"
           help=""
         >
-          <Input onChange={(e) => setClothData({ ...clothData, sautNumber: e.target.value })} style={{ width: '80%' }} placeholder="Cloth saut number" />
+          <Input onChange={(e) => setClothData({ ...clothData, mobile: e.target.value })} style={{ width: '80%' }} type="number" placeholder="Mobile number" />
         </Form.Item>
 
         <Form.Item
           {...formItemLayout}
           validateStatus
-          label="Type"
+          label="Address"
           help=""
         >
-          <Input onChange={(e) => setClothData({ ...clothData, type: e.target.value })} style={{ width: '80%' }} placeholder="Cloth type" />
+          <Input onChange={(e) => setClothData({ ...clothData, adress: e.target.value })} style={{ width: '80%' }} placeholder="Address" />
         </Form.Item>
 
         <Form.Item
           {...formItemLayout}
           validateStatus
-          label="Unit"
+          label="Shop Name"
           help=""
         >
-          <Input onChange={(e) => setClothData({ ...clothData, unit: e.target.value })} style={{ width: '80%' }} placeholder="Cloth unit" />
-        </Form.Item>
-
-        <Form.Item
-          {...formItemLayout}
-          validateStatus
-          label="Cost"
-          help=""
-        >
-          <Input onChange={(e) => setClothData({ ...clothData, cost: e.target.value })} type="number" style={{ width: '80%' }} placeholder="Cloth cost/unit" />
+          <Input onChange={(e) => setClothData({ ...clothData, shopName: e.target.value })} style={{ width: '80%' }} placeholder="Shop Name" />
         </Form.Item>
 
       </Form>
 
       <Button
-        onClick={() => addCloth(clothData)}
+        onClick={() => addRetailer(clothData)}
         style={{
           position: 'absolute', bottom: '0px', left: '0px', width: '100%', height: '50px',
         }}
@@ -89,4 +81,8 @@ function AddClothForm({ addCloth }) {
   );
 }
 
-export default AddClothForm;
+AddRetailerForm.propTypes = {
+  addRetailer: PropTypes.func.isRequired,
+};
+
+export default AddRetailerForm;

@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button } from 'antd';
+import { Button, message } from 'antd';
 import { connect } from 'react-redux';
-import { message } from 'antd';
 
-import ClothTable from '../../components/ClothTable';
+import TableWithPagination from '../../components/TableWithPagination/TableWithPagination';
 import { getClothData, addClothData } from './clothAction';
 import CustomDrawer from '../../components/CustomDrawer';
 import AddClothForm from './AddClothForm';
+import clothService from './clothService';
 
 import './Cloth.scss';
 
@@ -58,7 +58,10 @@ class Cloth extends React.PureComponent {
         <div className="cloth-setting-actions">
           <Button style={{marginLeft:'calc(100% - 100px)'}} onClick = {this.toggleDrawer}>+ Add Cloth</Button>
         </div>
-        <ClothTable clothTableData={clothTableData} />
+        <TableWithPagination
+          header={clothService.makeClothTableHeaderColumns()}
+          tableData={clothService.makeTableData(clothTableData)}
+        />
         <div>
           <CustomDrawer
             isDrawerOpen={isDrawerOpen}
