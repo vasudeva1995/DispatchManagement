@@ -38,7 +38,7 @@ export const DELETE = (url) => axios({
   }))
   .catch((err) => err);
 
-export const PUT = (url, params, data, headerData, ) => axios({
+export const PUT = (url, params, data, headerData) => axios({
   url,
   method: 'PUT',
   headers: headerData || header,
