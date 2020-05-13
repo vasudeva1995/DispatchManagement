@@ -30,6 +30,7 @@ function AddLot({
     sizes: {},
   });
 
+
   const [count, setCount] = useState(0);
 
   return (
@@ -75,7 +76,12 @@ function AddLot({
             onClick={() => {
               setLot({
                 ...Lots,
-                sizes: { ...Lots.sizes, [count]: {} },
+                sizes: {
+                  ...Lots.sizes,
+                  [count]: {
+                    size: 0, quantity: 0, price: 0, usedQuantity: 0,
+                  },
+                },
               });
               setCount(count + 1);
             }} // added here so that common modules can be made for status
