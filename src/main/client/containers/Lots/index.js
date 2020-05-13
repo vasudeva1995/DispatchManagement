@@ -140,7 +140,7 @@ import Challan from './Challan';
                     statusList={this.props.statusList}
                     selectedStatus={this.selectedStatus}
                     statusMap={this.props.statusMap} />}
-          title={this.props.isDrawerOpen === 'addLot'?'Add Lot':'Move Status'}
+          title={this.props.isDrawerOpen === 'addLot'?'Add Lot':this.selectedStatus?this.selectedStatus:'Move Status'}
         />
        </div>
     );
