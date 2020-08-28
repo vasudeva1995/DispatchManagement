@@ -6,6 +6,7 @@ import Setting from '../SettingContainer';
 import Cloth from '../ClothContainer';
 import LotsContainer from '../Lots/index';
 import Retailer from '../RetailerContainer';
+import RetailerBills from '../RetailerBills';
 
 
 const RoutesToRender = () => (
@@ -24,6 +25,11 @@ const RoutesToRender = () => (
       exact
       path="/Lots"
       component={LotsContainer}
+    />
+    <Route
+      exact
+      path="/RetailerBills"
+      component={RetailerBills}
     />
     <Route
       exact

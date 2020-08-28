@@ -19,17 +19,15 @@ const formItemLayout = {
   },
 };
 
-function AddLot({
-  addLot, statusMap, dataStores, statusList,
+function AddBill({
+  addBill, dataStores,
 }) {
-  const [Lots, setLot] = useState({
+  const [Bill, setBill] = useState({
     lotNo: '',
-    clothNo: '',
-    brand: '',
-    status: '',
-    sizes: {},
+    billNo: '',
+    retailerNo: '',
+    sizeJson: {},
   });
-
 
   const [count, setCount] = useState(0);
 
@@ -39,30 +37,27 @@ function AddLot({
         <Form.Item
           {...formItemLayout}
           validateStatus
+          label="Bill Number"
+          help=""
+        >
+          <Input onChange={(e) => setBill({ ...Bill, billNo: e.target.value })} style={{ width: '80%' }} placeholder="Bill Number" />
+        </Form.Item>
+        <Form.Item
+          {...formItemLayout}
+          validateStatus
           label="Lot Number"
           help=""
         >
-          <Input onChange={(e) => setLot({ ...Lots, lotNo: e.target.value })} style={{ width: '80%' }} placeholder="Lot Number" />
+          <Input onChange={(e) => setBill({ ...Bill, lotNo: e.target.value })} style={{ width: '80%' }} placeholder="Lot Number" />
         </Form.Item>
         <Form.Item
           {...formItemLayout}
           validateStatus
-          label="Cloth"
+          label="Retailer"
           help=""
         >
-          <Select style={{ width: '80%' }} onChange={(e) => setLot({ ...Lots, clothNo: e.target.value })}>
-            {Object.values(dataStores.cloths).map((obj) => <MenuItem key={obj.id} value={obj.id}>{obj.name}</MenuItem>)}
-          </Select>
-        </Form.Item>
-
-        <Form.Item
-          {...formItemLayout}
-          validateStatus
-          label="Brand"
-          help=""
-        >
-          <Select style={{ width: '80%' }} onChange={(e) => setLot({ ...Lots, brand: e.target.value })}>
-            {Object.values(dataStores.cloths).map((obj) => <MenuItem key={obj.id} value={obj.id}>{obj.name}</MenuItem>)}
+          <Select style={{ width: '80%' }} onChange={(e) => setBill({ ...Bill, retailerNo: e.target.value })}>
+            {Object.values(dataStores.retailers || {}).map((obj) => <MenuItem key={obj.id} value={obj.id}>{obj.name}</MenuItem>)}
           </Select>
         </Form.Item>
 
@@ -74,14 +69,9 @@ function AddLot({
         >
           <Button
             onClick={() => {
-              setLot({
-                ...Lots,
-                sizes: {
-                  ...Lots.sizes,
-                  [count]: {
-                    size: 0, quantity: 0, price: 0, usedQuantity: 0,
-                  },
-                },
+              setBill({
+                ...Bill,
+                sizeJson: { ...Bill.sizeJson, [count]: {} },
               });
               setCount(count + 1);
             }} // added here so that common modules can be made for status
@@ -95,20 +85,20 @@ function AddLot({
             <div style={{ width: '20%', marginRight: '20px', color: '#20B2AA' }}>Unit Price</div>
             <div style={{ width: '10%' }} />
           </div>
-          {Object.keys(Lots.sizes).map((key) => (
+          {Object.keys(Bill.sizeJson).map((key) => (
             <SizeComponent
-              sizeValues={Lots.sizes[key]}
+              sizeValues={Bill.sizeJson[key]}
               onChange={(sizeKey, value) => {
-                const lotsSizes = Lots.sizes;
-                lotsSizes[key][sizeKey] = value;
-                setLot({ ...Lots, sizes: lotsSizes });
+                const BillSizes = Bill.sizeJson;
+                BillSizes[key][sizeKey] = value;
+                setBill({ ...Bill, sizeJson: BillSizes });
               }}
               removeItem={() => {
-                const sizeObj = cloneDeep(Lots.sizes);
+                const sizeObj = cloneDeep(Bill.sizeJson);
                 delete sizeObj[key];
-                setLot({
-                  ...Lots,
-                  sizes: sizeObj,
+                setBill({
+                  ...Bill,
+                  sizeJson: sizeObj,
                 });
               }}
             />
@@ -118,7 +108,7 @@ function AddLot({
       </Form>
       <div style={{ position: 'relative' }} />
       <Button
-        onClick={() => addLot(Lots, statusList)}
+        onClick={() => addBill(Bill)}
         style={{
           position: 'absolute', bottom: '0px', left: '0px', width: '100%', height: '50px',
         }}
@@ -131,4 +121,4 @@ function AddLot({
   );
 }
 
-export default AddLot;
+export default AddBill;
