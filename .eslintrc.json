@@ -28,12 +28,12 @@
         "no-irregular-whitespace":0,
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
     },
-    "ecmaFeatures":{
-  "jsx": true,
-  "modules": true,
-  "destructuring": true,
-  "classes": true,
-  "forOf": true,
-  "blockBindings": true,
-}
+    "ecmaFeatures": {
+        "jsx": true,
+        "modules": true,
+        "destructuring": true,
+        "classes": true,
+        "forOf": true,
+        "blockBindings": true
+    }
 }

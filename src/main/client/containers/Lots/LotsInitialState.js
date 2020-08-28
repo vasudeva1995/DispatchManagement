@@ -6,13 +6,14 @@ const InitialState = Record({
   lotsMap: {},
   lots: [],
   statusMap: {
-    'Initiated':'Tailor',
-    'Tailor':'Washing',
-    'Washing': 'Packing',
-    'Packing' : 'In Stock'
+    Initiated: 'Tailor',
+    Tailor: 'Washing',
+    Washing: 'Packing',
+    Packing: 'In Stock',
   },
-  dataStores:{},
-  paginationConfig:{}
+  statusList: ['Initiated', 'Tailor', 'Washing', 'Packing', 'In Stock'],
+  dataStores: {},
+  paginationConfig: {},
 });
 
 export default new InitialState();

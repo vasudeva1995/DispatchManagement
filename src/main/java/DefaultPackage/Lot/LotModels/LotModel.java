@@ -5,7 +5,7 @@ import javax.validation.constraints.NotNull;
 import java.util.Map;
 
 @Entity
-@Table(name = "Lots")
+@Table(name = "lots")
 public class LotModel {
     public LotModel(String status,@NotNull Integer companyId, @NotNull Integer lotNo, @NotNull Integer clothNo, String brand, Map<String, Object> challans, Map<String, Object> sizes) {
         this.companyId = companyId;
