@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
-import appReducer from './container/Header/appReducer';
+import LotReducer from './containers/Lots/LotReducer';
+import cloth from './containers/ClothContainer/clothReducer';
 
 export default combineReducers({
-  appReducer,
+  cloth,
+  LotReducer
 });

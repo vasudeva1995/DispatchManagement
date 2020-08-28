@@ -1,0 +1,18 @@
+html {
+    body {
+        margin: 0;
+        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+        background-color: #f5f5f5;
+        .ant-message {
+            z-index: 1800;
+        }
+        a {
+            text-decoration: none;
+            color: rgba(0, 0, 0, 0.87);
+        }
+        .app-setting {
+            position: absolute;
+            top: calc(100vh - 24vh);
+        }
+    }
+}

@@ -34,3 +34,6 @@ build/
 node_modules
 webapp
 yarn.lock
+
+######backend########
+application.properties

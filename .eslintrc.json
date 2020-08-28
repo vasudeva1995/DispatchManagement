@@ -24,6 +24,7 @@
     "rules": {
         "no-console": 0,
         "no-empty": 0,
+        "linebreak-style": 0,
         "no-irregular-whitespace":0,
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
     },
@@ -34,6 +35,5 @@
   "classes": true,
   "forOf": true,
   "blockBindings": true,
-  "arrowFunctions": true
 }
 }

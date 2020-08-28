@@ -70,3 +70,34 @@
 add this to .eslintrc.json file to allow jsx in js files
 
  23) eslint initializing comand -> npx eslint --init
+ 
+ 
+ //For Backend
+ 
+24) Main apllication class serves the pacxkage in which it is placed
+
+25) To fix async and await problem go to this link https://stackoverflow.com/questions/33527653/babel-6-regeneratorruntime-is-not-defined
+
+26) Pageable constructor is deprecated. instead use PageRequest.of(page,size).
+
+27) Pass pageable instance to repo and it returns Page<Class>.
+
+28) objectMapper.readValue(jsonData,new TypeReference<Map<String, Object>>() {}) ,  objectMapper.writeValueAsString(datamap)  are used for ObjectMapper.
+
+29)     @Convert(converter = HashMapConverter.class)
+        private Map<String, Object> sizes;
+
+        HashMapConverter implements AttributeConverter<Map<String, Object>, String>
+
+        Used for serialization of map to json string in order to save it to db or get from db  &&  send to api response
+        Used for deserailization of a json string to map when we have it in use in code.
+
+
+
+30) To debug the react code from BROWSER SOURCE devtool we have to add "devtool: 'source-map'" in webpack, to show the react code not js converted code
+
+31)     @Modifying is used for updating quaery
+
+32) Add localhost to host and postgres to name to connect to pgadmin
+
+33) When use convert for serialization, then pass data as map, jpa will run convert      serializer before inserting data to db.
